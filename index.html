@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="node_1" class = "node">Hello World!</div>
+</body>
+
+<script>
+const node = document.getElementById("node_1");
+var can_move = false;
+
+node.addEventListener("mousedown", function () {
+  node.innerHTML = "Dragged";
+  can_move = true;
+});
+
+document.addEventListener("mouseup", function () {
+  can_move = false;
+})
+
+var offset_y;
+document.addEventListener('mousemove', function (event) {
+  if (can_move) {
+    offset_x = parseInt(window.getComputedStyle(node).getPropertyValue("width"), 10)/2;
+    offset_y = parseInt(window.getComputedStyle(node).getPropertyValue("height"), 10)/2;
+    node_pos_x = event.pageX - offset_x;
+    node_pos_y = event.pageY - offset_y;
+
+    node.style.top = node_pos_y + "px";
+    node.style.left = node_pos_x + "px";
+  }
+})
+</script>

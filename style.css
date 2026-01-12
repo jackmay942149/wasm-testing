@@ -1,0 +1,8 @@
+.node {
+  background-color: lightblue;
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  width: 300px;
+  height: 300px;
+}
