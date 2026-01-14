@@ -4,11 +4,14 @@
 </head>
 
 <body>
-  <div id="node_1" class = "node">Hello World!</div>
+  <div id="node_container">
+    <div id="node_1" class = "node">Hello World!</div>
+  </div>
 </body>
 
 <script>
 const node = document.getElementById("node_1");
+const container = document.getElementById("node_container");
 var can_move = false;
 
 node.addEventListener("mousedown", function () {
@@ -20,7 +23,6 @@ document.addEventListener("mouseup", function () {
   can_move = false;
 })
 
-var offset_y;
 document.addEventListener('mousemove', function (event) {
   if (can_move) {
     offset_x = parseInt(window.getComputedStyle(node).getPropertyValue("width"), 10)/2;
@@ -30,6 +32,16 @@ document.addEventListener('mousemove', function (event) {
 
     node.style.top = node_pos_y + "px";
     node.style.left = node_pos_x + "px";
+  }
+})
+
+document.addEventListener("keydown", function (event) {
+  if (event.code === "Space") {
+    const node_template = document.createElement('div');
+    node_template.id = "node_2";
+    node_template.className = "node";
+    node_template.textContent = "Hello World!";
+    container.appendChild(node_template);
   }
 })
 </script>
