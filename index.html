@@ -9,6 +9,7 @@
   </div>
 </body>
 
+<script async type="text/javascript" src="build/hello3.js"></script>
 <script>
 const node = document.getElementById("node_1");
 const container = document.getElementById("node_container");
@@ -40,7 +41,8 @@ document.addEventListener("keydown", function (event) {
     const node_template = document.createElement('div');
     node_template.id = "node_2";
     node_template.className = "node";
-    node_template.textContent = "Hello World!";
+    var result = Module.ccall("get_id", "number", null, null);
+    node_template.textContent = result;
     container.appendChild(node_template);
   }
 })
